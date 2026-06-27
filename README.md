@@ -1,5 +1,3 @@
-# homelab
-
 # Enterprise Home Lab
 
 ## Overview
