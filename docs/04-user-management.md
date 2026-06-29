@@ -1,46 +1,46 @@
 # User and Group Management
 
-This section demonstrates basic Linux user and group administration. The tasks include creating users, creating groups, and assigning users to groups.
+This section demonstrates basic Linux user and group administration, including creating users, creating groups, and assigning users to groups.
 
 ---
 
-# User Creation
+## Creating a User
 
 <img width="413" height="190" alt="Screenshot 2026-06-27 223634" src="https://github.com/user-attachments/assets/0f07893d-9f07-4174-b1f7-5b3cd90c4661" />
 
-## Objective
+### Objective
 
 Create a new local user account on the system.
 
-## Command
+### Command
 
 ```bash
 sudo adduser <username>
 ```
 
-### Example
+**Example**
 
 ```bash
 sudo adduser Alice
 ```
 
-### What this command does
+### What This Command Does
 
-- Creates a new user account.
-- Automatically creates a home directory (`/home/<username>`).
-- Prompts for a password.
-- Optionally asks for user information (Full Name, Phone Number, etc.).
-- Creates a private group for the user (on Ubuntu).
+* Creates a new user account.
+* Automatically creates a home directory (`/home/<username>`).
+* Prompts for a password.
+* Optionally asks for additional user information (Full Name, Phone Number, etc.).
+* Creates a private group for the new user (Ubuntu).
 
 ### Verification
 
-Display information about the newly created user.
+Verify that the user was created successfully.
 
 ```bash
 id <username>
 ```
 
-Example:
+**Example**
 
 ```bash
 id Alice
@@ -48,41 +48,41 @@ id Alice
 
 ---
 
-# Group Creation
+## Creating a Group
 
 <img width="320" height="58" alt="Screenshot 2026-06-27 224213" src="https://github.com/user-attachments/assets/ad7cc329-5729-4656-81ed-aa469dc58eab" />
 
-## Objective
+### Objective
 
-Create a new Linux group that can later be assigned to users.
+Create a Linux group that can be assigned to one or more users.
 
-## Command
+### Command
 
 ```bash
 sudo groupadd <groupname>
 ```
 
-### Example
+**Example**
 
 ```bash
 sudo groupadd IT
 ```
 
-### What this command does
+### What This Command Does
 
-- Creates a new group.
-- Assigns a unique Group ID (GID).
-- Does not automatically add users to the group.
+* Creates a new group.
+* Assigns a unique Group ID (GID).
+* Does not automatically add users to the group.
 
 ### Verification
 
-Display the group information.
+Verify that the group exists.
 
 ```bash
 getent group <groupname>
 ```
 
-Example:
+**Example**
 
 ```bash
 getent group IT
@@ -90,16 +90,15 @@ getent group IT
 
 ---
 
-# Assigning Groups to Users
+## Assigning a User to a Group
 
-<img width="628" height="215" alt="image" src="https://github.com/user-attachments/assets/041a0697-ccfb-4937-b4a5-eec959ff5b1d" />
+<img width="628" height="215" alt="Assigning Groups to Users" src="https://github.com/user-attachments/assets/041a0697-ccfb-4937-b4a5-eec959ff5b1d" />
 
+### Objective
 
-## Objective
+Add an existing user to an existing group.
 
-Assign an existing user to an existing group.
-
-## Commands
+### Commands
 
 Assign the user to a supplementary group.
 
@@ -113,7 +112,7 @@ Display the user's group membership.
 id <username>
 ```
 
-### Example
+**Example**
 
 ```bash
 sudo usermod -aG IT danielle
@@ -121,22 +120,22 @@ sudo usermod -aG IT danielle
 id danielle
 ```
 
-### What these commands do
+### Command Breakdown
 
 #### `usermod -aG`
 
-- `-a` — Appends the user to the specified group(s).
-- `-G` — Specifies supplementary group(s).
+* `-a` — Appends the user to existing supplementary groups.
+* `-G` — Specifies the supplementary group(s) to add.
 
-> **Important:** Always use `-aG` together. Using only `-G` will replace all existing supplementary groups for the user.
+> **Important:** Always use `-aG` together. Using only `-G` replaces all existing supplementary groups for the user.
 
 #### `id`
 
-Displays:
+Displays the following information:
 
-- User ID (UID)
-- Primary Group ID (GID)
-- All supplementary groups assigned to the user
+* User ID (UID)
+* Primary Group ID (GID)
+* Supplementary group memberships
 
 ### Verification
 
@@ -148,16 +147,26 @@ gid=1001(danielle)
 groups=1001(danielle),1002(IT)
 ```
 
-This confirms that the user **danielle** is now a member of the **IT** group.
+This confirms that **danielle** is now a member of the **IT** group.
 
 ---
 
-# Summary
+## Summary
 
-| Task | Command |
-|------|---------|
-| Create a user | `sudo adduser <username>` |
-| Create a group | `sudo groupadd <groupname>` |
-| Add user to a group | `sudo usermod -aG <groupname> <username>` |
-| Display user information | `id <username>` |
-| Display group information | `getent group <groupname>` |
+| Task                      | Command                                   |
+| ------------------------- | ----------------------------------------- |
+| Create a user             | `sudo adduser <username>`                 |
+| Create a group            | `sudo groupadd <groupname>`               |
+| Add a user to a group     | `sudo usermod -aG <groupname> <username>` |
+| Display user information  | `id <username>`                           |
+| Display group information | `getent group <groupname>`                |
+
+---
+
+## Key Takeaways
+
+* `adduser` creates a new user account along with a home directory.
+* `groupadd` creates a new Linux group.
+* `usermod -aG` safely adds a user to a supplementary group without removing existing group memberships.
+* The `id` command verifies a user's UID, GID, and group memberships.
+* `getent group` confirms that a group exists on the system.
