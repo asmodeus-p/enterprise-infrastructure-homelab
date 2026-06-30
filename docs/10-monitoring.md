@@ -41,8 +41,7 @@ agentAddress udp:161
 Save (Ctrl+O) and close (Ctrl+X) the file.
 
 ### Create the SNMPv3 User
-Stop the SNMP service first before creating a user
-Use this systemctl command to stop the service:
+Stop the SNMP service first before creating a user by using:
 ```
 sudo systemctl stop snmpd
 ```
@@ -51,4 +50,12 @@ Create an SNMPv3 user with this command:
 sudo net-snmp-create-v3-user
 ```
 It will prompt you for Username, Authentication password, Privacy password
+After everything is configured correctly, you should receive the system description instead of 
+authentication error
 
+### Restart and Enable SNMP
+Apply the settings y restarting snmpd and configure it to launch automatically during system boots:
+```
+sudo systemctl restart snmpd
+sudo systemctl enable snmpd
+```
