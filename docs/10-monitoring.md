@@ -1,4 +1,4 @@
-# Zabbix Installation Procedure
+# Zabbix Configuration Procedure
 ### Objective:
               Build a homelab with an enterprise-style infrastructure monitoring solution using
               Ubuntu Server and Zabbix to monitor Linux hosts, generate alerts, and visualize
@@ -6,12 +6,12 @@
               fundamentals, monitoring, troubleshooting, and documentation practices relevant to NOC
               engineer and Systems Administrator roles.
 
-## 1 Update the Ubuntu Server
+## 1. Update the Ubuntu Server
 ```
 sudo apt update
 ```
 
-## 2 Enabling SNMP
+## 2. Enabling SNMP
 ### Check if snmpd daemon is already installed in your Ubuntu server
 ```
 systemctl list-units --type=service | grep snmpd
