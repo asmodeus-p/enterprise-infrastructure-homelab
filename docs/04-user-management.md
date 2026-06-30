@@ -170,3 +170,24 @@ This confirms that **danielle** is now a member of the **IT** group.
 * `usermod -aG` safely adds a user to a supplementary group without removing existing group memberships.
 * The `id` command verifies a user's UID, GID, and group memberships.
 * `getent group` confirms that a group exists on the system.
+
+## Groups
+
+| Group | Purpose |
+|--------|---------|
+| hr | Human Resources |
+| accounting | Accounting Department |
+| it | IT Department |
+| employees | All employees |
+| Sales | Sales Department |
+
+---
+
+## Users
+
+| Username | Department | Groups |
+|----------|------------|--------|
+| alice | HR | hr |
+| bob | Accounting | Accounting |
+| charlie | Sales | Sales |
+| danielle | IT | IT, employee |
