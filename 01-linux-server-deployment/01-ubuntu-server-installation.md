@@ -116,23 +116,31 @@ Basic system information was verified to ensure the installation completed succe
 ```bash
 hostnamectl
 ```
-<img width="547" height="255" alt="image" src="https://github.com/user-attachments/assets/7553360b-7fa6-4f00-9ad8-adbb90d624f8" />
+> **Screenshot**
+>
+> <img width="547" height="255" alt="image" src="https://github.com/user-attachments/assets/7553360b-7fa6-4f00-9ad8-adbb90d624f8" />
 
 ```bash
 lsb_release -a
 ```
-<img width="517" height="92" alt="image" src="https://github.com/user-attachments/assets/761842f4-358a-4c54-b2ad-820ad35b9648" />
+> **Screenshot**
+>
+> <img width="517" height="92" alt="image" src="https://github.com/user-attachments/assets/761842f4-358a-4c54-b2ad-820ad35b9648" />
 
 ```bash
 uname -r
 ```
-<img width="502" height="35" alt="image" src="https://github.com/user-attachments/assets/1567012a-259c-4854-aa9d-bf3c1a382cd0" />
+> **Screenshot**
+>
+> <img width="502" height="35" alt="image" src="https://github.com/user-attachments/assets/1567012a-259c-4854-aa9d-bf3c1a382cd0" />
 
 
 ```bash
 hostname -I
 ```
-<img width="511" height="30" alt="image" src="https://github.com/user-attachments/assets/adf4a794-407a-462b-8ece-cd4bb29ec799" />
+> **Screenshot**
+>
+> <img width="511" height="30" alt="image" src="https://github.com/user-attachments/assets/adf4a794-407a-462b-8ece-cd4bb29ec799" />
 
 
 The following commands were executed to verify the successful deployment of the operating system and collect baseline system information.
@@ -177,6 +185,11 @@ ping ubuntu.com
 ```bash
 ping 8.8.8.8
 ```
+
+> **Screenshot**
+>
+> <img width="850" height="135" alt="image" src="https://github.com/user-attachments/assets/ed4adf7c-ba84-4e68-af1a-9a664f61b02b" />
+
 
 Expected result:
 
