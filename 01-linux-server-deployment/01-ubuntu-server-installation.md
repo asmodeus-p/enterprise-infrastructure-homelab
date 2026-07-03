@@ -9,6 +9,34 @@
 >
 > **Operating System:** Ubuntu Server 26.04 LTS
 
+> **Purpose**
+>
+> This document records the deployment and validation of the primary Linux infrastructure server used throughout the Enterprise Infrastructure Homelab.
+>
+> Rather than focusing solely on operating system installation, this documentation emphasizes deployment validation, operational readiness, and repeatable infrastructure practices.
+
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Architecture Diagram](#architecture-diagram)
+- [Objectives](#objectives)
+- [Environment](#environment)
+- [Deployment Process](#deployment-process)
+- [Deployment Verification](#deployment-verification)
+- [Result](#result)
+- [Skills Demonstrated](#skills-demonstrated)
+- [Lessons Learned](#lessons-learned)
+- [Post-Deployment Configuration](#post-deployment-configuration)
+- [Next Project](#next-project)
+
+## Project Information
+
+| Property | Value |
+|----------|---------|
+| Estimated Deployment Time | ~30–45 minutes |
+| Difficulty | Beginner–Intermediate |
+| Environment | Homelab |
+
 ## Project Overview
 
 This document describes the deployment and initial configuration of an Ubuntu Server within my Enterprise Infrastructure Homelab.
@@ -26,12 +54,12 @@ Windows 11 Host
 Oracle VirtualBox
         │
         ▼
-Ubuntu Server
+Ubuntu Server 26.04 LTS
         │
-        ├── OpenSSH
+        ├── OpenSSH Server
         ├── Apache HTTP Server
         ├── Zabbix Server
-        └── Future Infrastructure Services
+        └── Infrastructure Services
 ```
  
 ---
@@ -60,9 +88,9 @@ Ubuntu Server
 
 ---
 
-## Deployment Process
+## Implementation
 
-### 1. Create Virtual Machine
+### Create Virtual Machine
 
 A new virtual machine was created in Oracle VirtualBox with the following specifications:
 
@@ -85,7 +113,7 @@ The virtual machine was provisioned with sufficient CPU, memory, and storage res
 
 ---
 
-### 2. Install Ubuntu Server
+### Install Ubuntu Server
 
 The Ubuntu Server LTS ISO was installed using the standard installation wizard.
 
@@ -101,7 +129,7 @@ Following installation, the server was rebooted and verified before post-install
 
 ---
 
-### 3. Initial Login
+### Initial Login
 
 The server was successfully accessed using the administrator account created during installation.
 
@@ -109,7 +137,7 @@ Successful login confirmed that the operating system had been installed correctl
 
 ---
 
-### 4. Verify Installation
+### Verify Installation
 
 Basic system information was verified to ensure the installation completed successfully.
 
@@ -154,7 +182,7 @@ The following commands were executed to verify the successful deployment of the 
 
 ---
 
-### 5. Update the Server
+### Update the Server
 
 The package repository was refreshed and installed packages were upgraded to ensure the server was running the latest available software.
 
@@ -170,7 +198,7 @@ System packages were successfully updated without errors.
 
 ---
 
-### 6. Verify Network Connectivity
+### Verify Network Connectivity
 
 Connectivity was tested to confirm network access.
 
@@ -191,10 +219,13 @@ ping 8.8.8.8
 > <img width="850" height="135" alt="image" src="https://github.com/user-attachments/assets/ed4adf7c-ba84-4e68-af1a-9a664f61b02b" />
 
 
-Expected result:
+### Validation Criteria
 
-- Successful DNS resolution
-- Successful Internet connectivity
+The connectivity test was considered successful after confirming:
+
+- Successful ICMP communication with external hosts.
+- Successful DNS name resolution.
+- Stable network connectivity through the Bridged Adapter.
 
 ---
 
@@ -204,12 +235,16 @@ The deployment was verified using standard Linux system utilities.
 
 Verification confirmed:
 
-- Ubuntu Server 26.04 LTS installed successfully
-- Linux Kernel 7.0.0-27-generic running
-- Oracle VirtualBox virtualization detected
-- VirtualBox hardware model recognized
-- Server assigned a valid IPv4 address
-- System architecture identified as x86_64
+| Validation | Status |
+|------------|--------|
+| Ubuntu Server Installed | ✅ |
+| Kernel Verified | ✅ |
+| Network Connectivity | ✅ |
+| DNS Resolution | ✅ |
+| IP Address Assigned | ✅ |
+| Virtualization Detected | ✅ |
+| Package Manager Functional | ✅ |
+
 ---
 
 ## Result
@@ -225,7 +260,15 @@ The server was operational and ready for additional infrastructure services incl
 
 ---
 
-## Skills Demonstrated
+## Conclusion
+
+The Ubuntu Server deployment was successfully completed and validated.
+
+The server now provides a stable Linux environment that serves as the foundation for all infrastructure projects within this repository, including remote administration, web hosting, monitoring, and future network services.
+
+---
+
+## Technical Competencies Demonstrated
 
 - Ubuntu Server Deployment
 - Linux System Administration
@@ -248,6 +291,7 @@ Key takeaways include:
 - Verifying system health immediately after installation helps identify configuration issues early.
 - Updating packages before deploying services reduces compatibility and security risks.
 - Structured technical documentation improves reproducibility and simplifies future maintenance.
+- Consistent documentation improves troubleshooting and long-term maintainability.
 
 This deployment established the foundation for the remaining projects within the Enterprise Infrastructure Homelab.
 
@@ -262,6 +306,14 @@ Following installation, the server was prepared for future infrastructure servic
 - Verified operating system information
 - Confirmed SSH installation
 - Validated Internet connectivity
+
+---
+
+## References
+
+- Ubuntu Server Documentation
+- Oracle VirtualBox Documentation
+- OpenSSH Documentation
 
 ---
 
