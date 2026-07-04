@@ -14,7 +14,7 @@
 
 This document demonstrates fundamental Linux user and group administration tasks performed within the Ubuntu Server environment.
 
-User and group management is an essential responsibility of Linux system administrators. Proper account management helps enforce security policies, organize user permissions, and implement the principle of least privilege.
+User and group management is a fundamental responsibility of Linux system administrators. Proper account management helps enforce security policies, organize user permissions, and implement the principle of least privilege.
 
 ---
 
@@ -42,45 +42,60 @@ User and group management is an essential responsibility of Linux system adminis
 
 ## Create User
 
+The `adduser` command creates a new local user account and automatically generates the user's home directory, default shell configuration, and user-specific configuration files.
+
 ### Command
+
 ```bash
 sudo adduser alice
 ```
 
-The `adduser` command creates a new local user account and automatically generates the user's home directory and default configuration files.
 > **Screenshot**
 >
 > <img width="413" height="190" alt="Screenshot 2026-06-27 223634" src="https://github.com/user-attachments/assets/0f07893d-9f07-4174-b1f7-5b3cd90c4661" />
 
+---
+
 ## Create Group
 
+A dedicated Linux group was created to organize users with similar responsibilities and simplify permission management.
+
 ### Command
+
 ```bash
-sudo groupadd IT
+sudo groupadd HR
 ```
 
-A dedicated group was created to organize users with similar responsibilities.
 > **Screenshot**
 >
 > <img width="320" height="58" alt="Screenshot 2026-06-27 224213" src="https://github.com/user-attachments/assets/ad7cc329-5729-4656-81ed-aa469dc58eab" />
 
+---
+
 ## Add User to Group
 
+The user was added to the **HR** group using the `usermod` command.
+
+The `-aG` option appends the user to an existing supplementary group without removing any existing group memberships.
+
 ### Command
+
 ```bash
 sudo usermod -aG HR alice
 ```
 
-The user was added to the **HR** group using the `usermod` command.
-
-The `-aG` option appends the user to an existing supplementary group without removing existing memberships.
 > **Screenshot**
 >
 > <img width="628" height="215" alt="Assigning Groups to Users" src="https://github.com/user-attachments/assets/041a0697-ccfb-4937-b4a5-eec959ff5b1d" />
 
+---
+
 ## Verify Group Membership
 
-### Command
+Group membership was verified to ensure that the user had been successfully assigned to the intended group.
+
+### Commands
+
 ```bash
 groups alice
 ```
@@ -91,13 +106,15 @@ or
 id alice
 ```
 
-Verification confirmed that the user was successfully assigned to the intended group.
-
 > **Screenshot**
 >
 > <img width="342" height="37" alt="image" src="https://github.com/user-attachments/assets/2fc8b161-f6e2-4345-bc37-82f39a9ca873" />
 
+---
+
 ## Switch User
+
+The newly created account was accessed to verify that the user could successfully authenticate and log in to the system.
 
 ### Command
 
@@ -105,56 +122,69 @@ Verification confirmed that the user was successfully assigned to the intended g
 su - alice
 ```
 
-This command was used to verify that the newly created account could authenticate successfully.
-
 > **Screenshot**
 >
 > <img width="463" height="42" alt="image" src="https://github.com/user-attachments/assets/8de482d6-8867-483c-9cce-af04e1a09d35" />
 
+---
+
 ## User Information
 
-### Command
-```bash
-getent passwd | awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}
-```
-
-The `/etc/passwd` file stores basic information about local user accounts.
+The `getent passwd` command retrieves user account information from the system's configured name service database, including entries stored in `/etc/passwd`. This method is preferred because it works consistently across both local and centralized authentication environments.
 
 Verification confirmed that the newly created user account exists within the operating system.
+
+### Command
+
+```bash
+getent passwd | awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}'
+```
 
 > **Screenshot**
 >
 > <img width="666" height="102" alt="image" src="https://github.com/user-attachments/assets/7cb321bf-0d28-40c8-b81e-1306a7757b88" />
 
+---
+
 # Permission Management
 
 Linux permissions determine which users can read, write, or execute files and directories.
 
-Typical permission categories include:
+Permission assignments are divided into three categories:
 
-- Owner
-- Group
-- Others
+- **Owner** — The user who owns the file.
+- **Group** — Members of the assigned group.
+- **Others** — All remaining users.
 
-Permissions can be viewed using:
+The `ls -l` command is commonly used to display file and directory permissions.
+
+To demonstrate this, the root directory (`/`) was listed using the following command.
+
+### Command
 
 ```bash
-ls -l
+ls -l /
 ```
 
-Example:
+> **Screenshot**
+>
+> <img width="582" height="126" alt="image" src="https://github.com/user-attachments/assets/73d41157-8475-40c0-a616-213294639e6a" />
 
-```
+Example permission string:
+
+```text
 -rwxr-xr--
 ```
 
 Meaning:
 
-| Section | Permission |
+| Entity | Permission |
 |----------|------------|
 | Owner | Read, Write, Execute |
 | Group | Read, Execute |
 | Others | Read |
+
+---
 
 # Verification
 
@@ -165,6 +195,9 @@ Meaning:
 | User Added to Group | ✅ |
 | Group Membership Verified | ✅ |
 | User Authentication Verified | ✅ |
+| User Information Verified | ✅ |
+
+---
 
 ## Observations
 
@@ -172,22 +205,27 @@ The user and group administration tasks were completed successfully.
 
 Key observations include:
 
-- Linux stores user information within `/etc/passwd`.
+- Linux stores user account information within `/etc/passwd`.
 - Group membership simplifies permission management.
 - The `sudo` privilege should be granted only when necessary.
 - Verifying group membership helps prevent configuration errors.
 - Proper account management supports secure system administration.
+- Linux groups provide a scalable method of managing permissions for multiple users.
+
+---
 
 ## Technical Competencies Demonstrated
 
+- Linux System Administration
 - Linux User Administration
 - Linux Group Administration
-- Account Verification
 - Permission Management
-- Linux CLI
 - User Authentication
-- System Administration
-- Documentation
+- Linux CLI
+- Account Verification
+- Technical Documentation
+
+---
 
 ## Lessons Learned
 
@@ -199,6 +237,7 @@ Key takeaways include:
 - Groups simplify permission administration.
 - Administrative changes should always be verified after implementation.
 - Proper documentation improves maintainability and troubleshooting.
+- Consistent user and group naming conventions simplify long-term system administration.
 
 ---
 
