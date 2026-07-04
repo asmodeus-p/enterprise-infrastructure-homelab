@@ -7,12 +7,14 @@
 > **Status:** Completed
 >
 > **Purpose:** Document the baseline hardware, operating system, and resource configuration of the Ubuntu Server used throughout the homelab.
->
-> ## Project Overview
+
+ ## Project Overview
 
 This document records the baseline specifications of the Ubuntu Server deployed within the Enterprise Infrastructure Homelab.
 
 The collected information serves as a configuration baseline that can be referenced throughout future infrastructure projects, troubleshooting activities, and performance monitoring.
+
+---
 
 ## Objectives
 
@@ -22,21 +24,32 @@ The collected information serves as a configuration baseline that can be referen
 - Document hardware and virtualization settings.
 - Support future troubleshooting and monitoring activities.
 
+---
+
 ## Network Information
+
+### Command
+```bash
+ip addr show
+```
+>**Screenshot**
+>
+><img width="838" height="367" alt="image" src="https://github.com/user-attachments/assets/311e5992-b5b1-477e-b43a-ec6b45a5d2b9" />
 
 | Property | Value |
 |----------|-------|
 | Hostname | ubuntu |
-| IPv4 Address | 10.0.2.15 |
+| IPv4 Address | 192.168.100.105 |
 | Network Mode | Bridged Adapter |
 | Interface | enp0s3 |
 
 ## CPU Information
 
-
+### Command
 ```bash
 lscpu
 ```
+The server's processor configuration was verified using the `lscpu` command.
 > **Screenshot**
 >
 ><img width="678" height="257" alt="image" src="https://github.com/user-attachments/assets/ebe59eae-15ff-4aaa-be36-fa5dbe297fbe" />
@@ -65,11 +78,12 @@ lscpu
 | NUMA Nodes | 1 |
 
 ## Memory Information
-Command Used:
+
+### Command
 ```bash
 free -h
 ```
-
+The server's memory configuration and utilization were verified using the `free -h` command.
 >**Screenshot**
 >
 ><img width="656" height="77" alt="image" src="https://github.com/user-attachments/assets/39e5cec2-f148-4800-82cb-d0a94740c09d" />
@@ -85,9 +99,12 @@ free -h
 | Swap | Disabled (0 B) |
 
 ## Storage Information
+
+### Command
 ```bash
 df -h
 ```
+The storage layout and filesystem utilization were verified using the `df -h` command.
 >**Screenshot**
 >
 ><img width="658" height="177" alt="image" src="https://github.com/user-attachments/assets/b3bc5607-263c-4751-92e6-143135948c97" />
@@ -102,11 +119,13 @@ df -h
 | `tmpfs` | 387 MB | 8 KB | 387 MB | 1% | `/run/user/1000` |
 | `tmpfs` | 387 MB | 8 KB | 387 MB | 1% | `/run/user/1001` |
 
-# Virtualization Information
-Command used:
+## Virtualization Information
+
+### Command
 ```bash
 hostnamectl
 ```
+The server's virtualization information was verified using the `hostnamectl` command.
 >**Screenshot**
 >
 ><img width="535" height="256" alt="image" src="https://github.com/user-attachments/assets/281f7f69-ff13-4400-9fbb-cd3b8b6ed8cf" />
@@ -119,6 +138,8 @@ hostnamectl
 | Hardware Vendor | innotek GmbH |
 | Hardware Model | VirtualBox |
 
+---
+
 ## Observations
 
 The deployed Ubuntu Server is operating within expected resource limits.
@@ -130,21 +151,25 @@ Current observations include:
 - Root storage has adequate free space for future deployments.
 - Swap is currently disabled.
 - The server is suitable for hosting infrastructure services such as Apache, SSH, and Zabbix.
+- The server provides sufficient resources for hosting additional homelab services without exceeding available system capacity.
+- The baseline configuration documented here will serve as a reference for future troubleshooting, monitoring, and performance comparisons.
 
-## Verification Commands
+## Summary of Commands Used
 
 The following Linux commands were used to collect the information documented in this file.
 
 | Command | Purpose |
 |---------|----------|
+| df -h | Display filesystem usage |
+| free -h | Display memory usage |
 | hostnamectl | Display operating system and hardware information |
 | lsb_release -a | Verify Ubuntu release information |
 | lscpu | Display processor information |
-| free -h | Display memory usage |
-| df -h | Display filesystem usage |
+
+---
 
 ## Repository Navigation
 
-| Previous | Current | Next |
+| ⬅ Previous | 🏠 Section Home | Next ➡ |
 |----------|---------|------|
-| Ubuntu Server Deployment | **Server Information** | Basic Linux Configuration |
+| [Ubuntu Server Deployment](01-ubuntu-server-deployment.md) | [Linux Server Deployment](README.md) | Basic Linux Configuration |
