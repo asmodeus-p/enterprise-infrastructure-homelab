@@ -245,4 +245,4 @@ Key takeaways include:
 
 | ⬅ Previous | 🏠 Section Home | Next ➡ |
 |------------|----------------|---------|
-| [Basic Linux Configuration](03-basic-linux-configuration.md) | [Linux Server Deployment](README.md) | [SSH Remote Administration](05-ssh-remote-administration.md) |
+| [Server Information](02-server-information.md) | [Linux Server Deployment](README.md) | [SSH Remote Administration](05-ssh-configuration.md) |
