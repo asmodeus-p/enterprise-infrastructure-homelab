@@ -311,4 +311,4 @@ The next document covers the server specifications, hardware information, operat
 
 | Previous | Current | Next |
 |----------|---------|------|
-| — | **Ubuntu Server Deployment** | Server Information |
+| — | **Ubuntu Server Deployment** | [02-server-information.md](Server Information) |
