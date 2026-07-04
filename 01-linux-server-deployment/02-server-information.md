@@ -172,4 +172,4 @@ The following Linux commands were used to collect the information documented in 
 
 | ⬅ Previous | 🏠 Section Home | Next ➡ |
 |----------|---------|------|
-| [Ubuntu Server Deployment](01-ubuntu-server-installation.md) | [Linux Server Deployment](README.md) | Basic Linux Configuration |
+| [Ubuntu Server Deployment](01-ubuntu-server-installation.md) | [Linux Server Deployment](README.md) | [User and Group Management](03-user-group-management.md) |
