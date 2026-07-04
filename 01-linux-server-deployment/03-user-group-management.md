@@ -38,8 +38,6 @@ User and group management is an essential responsibility of Linux system adminis
 | User Privileges | sudo |
 | Shell | Bash |
 
----
-
 # Implementation
 
 ## Create User
@@ -158,8 +156,6 @@ Meaning:
 | Group | Read, Execute |
 | Others | Read |
 
----
-
 # Verification
 
 | Task | Status |
@@ -169,8 +165,6 @@ Meaning:
 | User Added to Group | ✅ |
 | Group Membership Verified | ✅ |
 | User Authentication Verified | ✅ |
-
----
 
 ## Observations
 
@@ -184,8 +178,6 @@ Key observations include:
 - Verifying group membership helps prevent configuration errors.
 - Proper account management supports secure system administration.
 
----
-
 ## Technical Competencies Demonstrated
 
 - Linux User Administration
@@ -196,8 +188,6 @@ Key observations include:
 - User Authentication
 - System Administration
 - Documentation
-
----
 
 ## Lessons Learned
 
