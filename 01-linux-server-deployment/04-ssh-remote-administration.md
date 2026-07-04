@@ -6,26 +6,26 @@
 >
 > **Status:** Completed
 >
-> **Purpose:** Configure and verify Secure Shell (SSH) to enable secure remote administration of the Ubuntu Server from other devices within the homelab.
+> **Purpose:** Validate and demonstrate secure remote administration of an Ubuntu Server using OpenSSH within the homelab environment.
 
 ---
 
 ## Project Overview
 
-This document demonstrates the configuration and validation of Secure Shell (SSH) for remote administration of the Ubuntu Server.
+This document demonstrates the verification, validation, and practical use of Secure Shell (SSH) for remote administration of the Ubuntu Server.
 
-SSH is the standard protocol used by Linux system administrators to securely manage servers over a network. Configuring SSH allows administrators to remotely access systems, perform maintenance tasks, deploy services, and troubleshoot issues without requiring direct physical access.
+SSH is the standard protocol used by Linux system administrators to securely manage servers over a network. This project focuses on verifying the SSH service, validating network connectivity, and demonstrating secure remote administration from another machine within the homelab.
 
 ---
 
 ## Objectives
 
-- Install and configure OpenSSH Server.
-- Verify the SSH service status.
-- Enable secure remote administration.
-- Validate network connectivity.
+- Verify the OpenSSH Server installation.
+- Validate the SSH service status.
+- Confirm secure remote administration.
+- Verify network connectivity.
 - Test remote login from another machine.
-- Practice basic SSH administration.
+- Practice Linux server administration over SSH.
 
 ---
 
@@ -39,11 +39,11 @@ SSH is the standard protocol used by Linux system administrators to securely man
 | Authentication | Username and Password |
 | Network Mode | Bridged Adapter |
 
-# Implementation
+## Implementation
 
 ## Verify OpenSSH Installation
-Standard Ubuntu Server installations commonly come with the OpenSSH server pre-installed and enabled.
-The following command was used to verify that the SSH service was installed and running.
+OpenSSH Server was selected during the Ubuntu Server installation process.
+The following command was used to verify that the SSH service was installed, enabled, and running successfully.
 
 ### Command
 ```bash
@@ -58,7 +58,7 @@ sudo systemctl status ssh
 
 ## Verify SSH Service at Startup
 
-The SSH service was configured to start automatically during system boot. The following command verified that the service was enabled.
+The following command was used to verify that the SSH service was enabled to start automatically during system boot.
 
 ### Command
 
@@ -96,23 +96,22 @@ sudo ss -tln | grep :22
 
 ## Verify Network Connectivity
 
-Before attempting remote administration, the server's network connectivity and IP address were verified.
+The server's IP address was first identified.
 
-### Commands
-
+### Command
 ```bash
 hostname -I
 ```
-
-```bash
-ping 192.168.100.xxx
-```
-
 > **Screenshot**
 >
 >  <img width="507" height="30" alt="image" src="https://github.com/user-attachments/assets/b046372a-0b54-4f3f-a818-d475c40992ea" />
 
-Check if the IP address of the server is reachable by pinging from another device in the same network:
+The server's IP address was then tested from another device on the same network to verify Layer 3 connectivity prior to establishing an SSH session.
+
+### Command
+```bash
+ping 192.168.100.xxx
+```
 
 > **Screenshot**
 >
@@ -141,16 +140,9 @@ ssh marc@192.168.100.105
 After authentication, administrative commands were executed remotely to verify successful access to the server.
 
 ### Commands
-
 ```bash
 hostnamectl
-```
-
-```bash
 whoami
-```
-
-```bash
 pwd
 ```
 
@@ -162,27 +154,48 @@ pwd
 
 ## Close the SSH Session
 
-The SSH session was terminated after completing administrative tasks.
+The SSH session was closed after administrative tasks were completed to terminate the secure remote connection properly.
 
 ### Command
-
 ```bash
 exit
 ```
 
-# Security Considerations
+## Troubleshooting
+
+## Unable to Connect via SSH
+
+### Symptoms
+
+- SSH connection timed out.
+- Ubuntu Server could not be reached from the Kali Linux virtual machine.
+
+### Root Cause
+
+The Ubuntu Server virtual machine was configured to use a NAT network adapter, preventing direct communication with other devices on the local network.
+
+### Resolution
+
+The VirtualBox network adapter was changed from **NAT** to **Bridged Adapter**, allowing the Ubuntu Server to obtain an IP address on the local network and accept incoming SSH connections.
+
+### Verification
+
+Connectivity was verified by successfully pinging the server and establishing an SSH session from the Kali Linux virtual machine.
+
+## Security Considerations
 
 SSH provides encrypted communication between the client and server, helping protect authentication credentials and administrative sessions from interception.
 
 Basic security practices include:
 
 - Restrict administrative access to authorized users.
+- Use strong passwords or SSH key authentication.
+- Restrict SSH access using firewall rules where appropriate.
 - Keep OpenSSH updated.
 - Disable unused accounts.
-- Use strong passwords or SSH key authentication.
 - Review SSH logs regularly.
 
-# Verification
+## Verification
 
 | Task | Status |
 |------|--------|
@@ -192,10 +205,12 @@ Basic security practices include:
 | TCP Port 22 Listening | ✅ |
 | Remote Login Successful | ✅ |
 | Remote Administration Verified | ✅ |
+| Network Connectivity Verified | ✅      |
+
 
 ## Observations
 
-The SSH service was configured successfully and allowed secure remote administration of the Ubuntu Server.
+The SSH service was verified successfully and enabled secure remote administration of the Ubuntu Server.
 
 Key observations include:
 
@@ -203,14 +218,15 @@ Key observations include:
 - The server accepted remote authentication from another machine.
 - Remote administration eliminates the need for direct physical access.
 - Proper service verification ensures SSH availability after reboot.
+- Successful SSH connectivity depends on both service availability and proper network configuration.
 
 ## Technical Competencies Demonstrated
 
 - Linux System Administration
+- Remote Server Administration
 - OpenSSH Administration
-- Remote Server Management
-- Service Management
 - Linux Networking
+- Service Management
 - Authentication
 - System Verification
 - Technical Documentation
@@ -222,10 +238,11 @@ This project reinforced the importance of secure remote administration within Li
 Key takeaways include:
 
 - SSH is the primary method of administering Linux servers remotely.
-- Verifying service status is an important step after installation.
+- Verifying service status confirms that SSH is operational before attempting remote administration.
 - Network connectivity must be validated before troubleshooting SSH issues.
 - Enabling services at boot improves operational reliability.
 - Secure remote administration improves efficiency while maintaining system security.
+- Understanding the underlying network configuration is essential when diagnosing remote connectivity issues.
 
 ---
 
@@ -233,4 +250,4 @@ Key takeaways include:
 
 | ⬅ Previous | 🏠 Section Home | Next ➡ |
 |------------|----------------|---------|
-| [User and Group Management](04-user-group-management.md) | [Linux Server Deployment](README.md) | [Apache HTTP Server](06-apache-web-server.md) |
+| [User and Group Management](03-user-group-management.md) | [Linux Server Deployment](README.md) | [Apache HTTP Server](05-apache-web-server.md) |
