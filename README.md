@@ -1,6 +1,11 @@
-# Enterprise Linux Homelab
+# Enterprise Infrastructure Homelab
 
-> An enterprise-inspired home lab built to develop practical skills in Linux System Administration, Networking, Infrastructure Monitoring, and IT Operations.
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Platform](https://img.shields.io/badge/Platform-Ubuntu%20Server-orange)
+![Virtualization](https://img.shields.io/badge/VirtualBox-7.x-blue)
+![Documentation](https://img.shields.io/badge/Documentation-Professional-blueviolet)
+
+> An enterprise-inspired homelab built to develop practical, hands-on skills in Linux System Administration, Networking, Infrastructure Monitoring, and IT Operations.
 
 ---
 
@@ -12,10 +17,22 @@ Instead of simply installing software, every service is deployed, configured, te
 
 This project serves as both a technical portfolio and a learning journal while preparing for roles such as:
 
-- Junior System Administrator
+- Junior Systems Administrator
 - Junior NOC Engineer
 - IT Infrastructure Engineer
 - Technical Support Engineer
+
+---
+
+# Key Highlights
+
+- Enterprise-inspired Linux infrastructure
+- Production-style technical documentation
+- Real-world troubleshooting and incident response
+- Infrastructure monitoring with Zabbix
+- Service deployment and validation
+- Root cause analysis
+- Continuous project expansion
 
 ---
 
@@ -28,6 +45,19 @@ This project serves as both a technical portfolio and a learning journal while p
 - Develop structured troubleshooting methodology
 - Produce professional technical documentation
 - Continuously expand the environment with enterprise technologies
+
+---
+
+## Current Progress
+
+| Section | Status |
+|---------|--------|
+| Linux Server Deployment | ✅ |
+| Linux Administration | 🚧 |
+| Network Administration | 🚧 |
+| Infrastructure Monitoring | 🚧 |
+| Security | 📅 Planned |
+| Incident Response | ✅ |
 
 ---
 
@@ -50,14 +80,36 @@ This project serves as both a technical portfolio and a learning journal while p
 
 ---
 
+## Architecture
+
+```text
+                    Windows 11 Host
+                           │
+                           ▼
+                  Oracle VirtualBox
+                    ┌────────┴────────┐
+                    │                 │
+                    ▼                 ▼
+            Ubuntu Server        Kali Linux
+            (Primary Server)     (Client/Test Workstation)
+                    │
+        ┌───────────┼────────────┐
+        │           │            │
+        ▼           ▼            ▼
+     OpenSSH     Apache      Zabbix
+     Server      HTTP        Monitoring
+```
+
+---
+
 # Repository Structure
 
 ```text
 .
 ├── 01-linux-server-deployment/
-├── 02-network-administration/
-├── 03-infrastructure-monitoring/
-├── 04-linux-administration/
+├── 02-linux-administration/
+├── 03-network-administration/
+├── 04-infrastructure-monitoring/
 ├── 05-troubleshooting-and-incident-response/
 ├── 06-security/
 ├── 07-learning/
@@ -70,18 +122,33 @@ Each directory focuses on a specific area of system administration and contains 
 
 # Technologies
 
-## Current
+## Technologies Used
 
+### Operating Systems
 - Ubuntu Server LTS
+- Kali Linux
+
+### Administration
+- Bash
 - Linux CLI
+
+### Infrastructure
+- Oracle VirtualBox
+
+### Services
 - OpenSSH
 - Apache HTTP Server
-- Oracle VirtualBox
+
+### Monitoring
+- Zabbix (In Progress)
+
+### Version Control
 - Git
 - GitHub
-- Bash Scripting
 
-## Planned
+---
+
+## Roadmap
 
 - Zabbix
 - Docker
@@ -105,14 +172,6 @@ Each directory focuses on a specific area of system administration and contains 
 - Package management
 - Service management
 
-## Networking
-
-- IP addressing
-- Virtual networking
-- SSH connectivity
-- Client-server communication
-- Network troubleshooting
-
 ## Infrastructure
 
 - Server deployment
@@ -121,13 +180,30 @@ Each directory focuses on a specific area of system administration and contains 
 - Configuration management
 - System maintenance
 
-## Troubleshooting
+## Networking
+
+- IP addressing
+- Virtual networking
+- SSH connectivity
+- Client-server communication
+- Network troubleshooting
+
+## Infrastructure Monitoring
+
+- Zabbix deployment
+- Service monitoring
+- Host monitoring
+- Dashboard configuration
+
+## Troubleshooting and Incident Response
 
 - Root cause analysis
 - Network diagnostics
 - Virtual machine recovery
 - Service troubleshooting
 - Incident documentation
+
+## Technical Documentation
 
 ---
 
@@ -146,49 +222,13 @@ Every implementation is documented with:
 
 This approach mirrors the documentation standards commonly used in enterprise IT environments.
 
----
-
-# Current Progress
-
-## Linux Server Deployment
-
-- Ubuntu Server installation
-- Initial server configuration
-- User and group management
-- SSH remote administration
-- Apache Web Server deployment
-
-## Network Administration
-
-- In Progress
-
-## Infrastructure Monitoring
-
-- In Progress (Zabbix)
-
-## Linux Administration
-
-- In Progress
-
-## Security
-
-- Planned
-
-## Troubleshooting & Incident Response
-
-- VirtualBox VM recovery
-- Network troubleshooting
-- Service diagnostics
-
----
-
 # Roadmap
 
 - [x] Ubuntu Server deployment
 - [x] SSH remote administration
 - [x] Apache Web Server
-- [ ] User administration
-- [ ] Linux permissions
+- [x] User administration
+- [x] Linux permissions
 - [ ] Network administration
 - [ ] Zabbix monitoring
 - [ ] Bash automation
@@ -205,9 +245,11 @@ This approach mirrors the documentation standards commonly used in enterprise IT
 
 # Why This Project?
 
-Many entry-level IT roles expect practical experience with Linux servers, networking, monitoring, troubleshooting, and documentation.
+Many entry-level Systems Administrator and Network Operations Center (NOC) roles require practical experience with Linux administration, networking, monitoring, troubleshooting, and technical documentation.
 
-This homelab provides a structured environment for learning those skills through hands-on implementation while maintaining documentation similar to what would be expected in a professional workplace.
+This homelab was built to bridge the gap between academic knowledge and real-world IT operations by providing hands-on experience with infrastructure deployment, service management, incident response, and operational documentation.
+
+Rather than focusing solely on software installation, each project emphasizes deployment validation, troubleshooting, operational readiness, and structured documentation to simulate professional IT environments.
 
 ---
 
