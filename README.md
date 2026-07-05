@@ -61,11 +61,6 @@ This project serves as both a technical portfolio and a learning journal while p
 ├── 05-troubleshooting-and-incident-response/
 ├── 06-security/
 ├── 07-learning/
-├── diagrams/
-├── docs/
-├── scenarios/
-├── screenshots/
-├── scripts/
 └── assets/
 ```
 
