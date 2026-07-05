@@ -6,13 +6,15 @@
 ![Documentation](https://img.shields.io/badge/Documentation-Professional-blueviolet)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
+> **Last Updated:** July 2026
+
 > An enterprise-inspired homelab built to develop practical, hands-on skills in Linux System Administration, Networking, Infrastructure Monitoring, and IT Operations.
 
 ---
 
 # Overview
 
-This repository documents my hands-on journey of building and maintaining a Linux-based enterprise homelab. The objective is to simulate real-world IT environments commonly found in organizations and gain practical experience beyond classroom learning.
+This repository documents my hands-on journey of building and maintaining a Linux-based enterprise homelab. The objective is to simulate enterprise IT environments and gain practical experience beyond classroom learning.
 
 Instead of simply installing software, every service is deployed, configured, tested, documented, and maintained as if it were part of a production environment.
 
@@ -29,17 +31,34 @@ This project serves as both a technical portfolio and a learning journal while p
 
 - Enterprise-inspired Linux infrastructure
 - Production-style technical documentation
-- Real-world troubleshooting and incident response
-- Infrastructure monitoring with Zabbix
-- Service deployment and validation
-- Root cause analysis
+- Linux systems administration
+- Infrastructure monitoring
+- Troubleshooting and incident response
 - Continuous project expansion
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Key Highlights](#key-highlights)
+- [Objectives](#objectives)
+- [Current Progress](#current-progress)
+- [Lab Environment](#lab-environment)
+- [Architecture](#architecture)
+- [Repository Structure](#repository-structure)
+- [Technologies](#technologies)
+- [Skills Demonstrated](#skills-demonstrated)
+- [Documentation](#documentation)
+- [Roadmap](#roadmap)
+- [Why This Project?](#why-this-project)
+- [Disclaimer](#disclaimer)
 
 ---
 
 # Objectives
 
-- Build a production-inspired Linux environment
+- Build a production-like Linux environment
 - Strengthen Linux administration skills
 - Practice networking concepts and server deployment
 - Learn infrastructure monitoring and incident response
@@ -49,16 +68,22 @@ This project serves as both a technical portfolio and a learning journal while p
 
 ---
 
+# Repository Goals
+
+This repository is maintained as a long-term learning project. New technologies, services, troubleshooting scenarios, and documentation will continue to be added as practical experience grows.
+
+---
+
 ## Current Progress
 
 | Section | Status |
 |---------|--------|
-| Linux Server Deployment | ✅ |
-| Linux Administration | 🚧 |
-| Network Administration | 🚧 |
-| Infrastructure Monitoring | 🚧 |
-| Security | 📅 Planned |
-| Incident Response | ✅ |
+| Linux Server Deployment | **Completed** |
+| Linux Administration | In Progress |
+| Network Administration | In Progress |
+| Infrastructure Monitoring | In Progress |
+| Security | Planned |
+| Incident Response | **Completed** |
 
 ---
 
@@ -97,8 +122,8 @@ This project serves as both a technical portfolio and a learning journal while p
         ┌───────────┼────────────┐
         │           │            │
         ▼           ▼            ▼
-     OpenSSH     Apache      Zabbix
-     Server      HTTP        Monitoring
+     OpenSSH     Apache        Zabbix
+     Server    HTTP Server    Monitoring
 ```
 
 ---
@@ -118,6 +143,7 @@ This project serves as both a technical portfolio and a learning journal while p
 ```
 
 Each directory focuses on a specific area of system administration and contains detailed documentation, screenshots, configuration steps, troubleshooting notes, and lessons learned.
+Documentation is organized by technical domain rather than chronology to mirror the structure of an enterprise knowledge base.
 
 ---
 
@@ -129,12 +155,12 @@ Each directory focuses on a specific area of system administration and contains 
 - Ubuntu Server LTS
 - Kali Linux
 
-### Administration
-- Bash
-- Linux CLI
-
 ### Infrastructure
 - Oracle VirtualBox
+
+### Administration
+- Bash Shell
+- GNU/Linux Command Line
 
 ### Services
 - OpenSSH
@@ -146,19 +172,6 @@ Each directory focuses on a specific area of system administration and contains 
 ### Version Control
 - Git
 - GitHub
-
----
-
-## Roadmap
-
-- Zabbix
-- Docker
-- Samba
-- UFW Firewall
-- Nginx
-- DNS
-- DHCP
-- Ansible
 
 ---
 
@@ -180,6 +193,7 @@ Each directory focuses on a specific area of system administration and contains 
 - Documentation
 - Configuration management
 - System maintenance
+- Service validation
 
 ## Networking
 
@@ -206,11 +220,25 @@ Each directory focuses on a specific area of system administration and contains 
 
 ## Technical Documentation
 
+Each project within this repository follows a consistent documentation format to improve readability, reproducibility, and troubleshooting.
+
+Documentation typically includes:
+
+- Project overview
+- Objectives
+- Environment
+- Implementation steps
+- Configuration commands
+- Validation procedures
+- Troubleshooting
+- Lessons learned
+- Repository navigation
+
 ---
 
-# Documentation
+# Documentation Standards
 
-Every implementation is documented with:
+Every project follows a standardized documentation format that includes:
 
 - Objectives
 - Prerequisites
@@ -225,22 +253,30 @@ This approach mirrors the documentation standards commonly used in enterprise IT
 
 # Roadmap
 
-- [x] Ubuntu Server deployment
-- [x] SSH remote administration
-- [x] Apache Web Server
-- [x] User administration
-- [x] Linux permissions
-- [ ] Network administration
-- [ ] Zabbix monitoring
-- [ ] Bash automation
-- [ ] Samba file server
+## Completed
+
+- [x] Ubuntu Server Deployment
+- [x] User & Group Management
+- [x] SSH Remote Administration
+- [x] Apache HTTP Server
+- [x] VirtualBox VM Recovery Documentation
+
+## In Progress
+
+- [ ] Network Administration
+- [ ] Zabbix Monitoring
+
+## Planned
+
 - [ ] Docker
-- [ ] Nginx reverse proxy
-- [ ] UFW firewall
-- [ ] Backup automation
-- [ ] Disaster recovery scenarios
-- [ ] Infrastructure hardening
-- [ ] Ansible automation
+- [ ] Samba
+- [ ] DNS
+- [ ] DHCP
+- [ ] Bash Automation
+- [ ] Nginx Reverse Proxy
+- [ ] UFW Firewall
+- [ ] Infrastructure Hardening
+- [ ] Ansible
 
 ---
 
