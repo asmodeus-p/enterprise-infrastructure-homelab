@@ -108,7 +108,7 @@ sudo ss -tln | grep :80
 
 > **Screenshot**
 >
-> *(Insert screenshot)*
+> <img width="497" height="73" alt="image" src="https://github.com/user-attachments/assets/fabe7141-641f-45cb-a77c-389997104f72" />
 
 ---
 
