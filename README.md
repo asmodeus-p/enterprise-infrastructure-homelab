@@ -2,8 +2,9 @@
 
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Platform](https://img.shields.io/badge/Platform-Ubuntu%20Server-orange)
-![Virtualization](https://img.shields.io/badge/VirtualBox-7.x-blue)
+![Virtualization](https://img.shields.io/badge/VirtualBox-7.2.2-blue)
 ![Documentation](https://img.shields.io/badge/Documentation-Professional-blueviolet)
+![GitHub license](https://img.shields.io/github/license/asmodeus-p/enterprise-infrastructure-homelab)
 
 > An enterprise-inspired homelab built to develop practical, hands-on skills in Linux System Administration, Networking, Infrastructure Monitoring, and IT Operations.
 
