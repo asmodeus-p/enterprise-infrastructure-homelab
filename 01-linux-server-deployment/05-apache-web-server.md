@@ -6,15 +6,17 @@
 >
 > **Status:** Completed
 >
-> **Purpose:** Deploy, configure, and validate the Apache HTTP Server to provide web services within the Ubuntu Server homelab environment.
+> **Purpose:** Deploy, configure, validate, and manage the Apache HTTP Server to provide web services within the Ubuntu Server homelab environment.
 
 ---
 
 ## Project Overview
 
-This document demonstrates the deployment, configuration, and validation of the Apache HTTP Server on Ubuntu Server.
+This document demonstrates the deployment, configuration, validation, and administration of the Apache HTTP Server on Ubuntu Server.
 
-Apache is one of the most widely used web servers in enterprise environments. Deploying a web server provides practical experience with Linux service management, package installation, network connectivity, and service verification.
+Apache HTTP Server is one of the most widely used web servers in enterprise environments. Deploying a web server provides practical experience with Linux service management, package administration, network connectivity, service verification, and operational validation.
+
+This project also demonstrates the process of verifying service availability after deployment and following infrastructure recovery activities.
 
 ---
 
@@ -22,9 +24,9 @@ Apache is one of the most widely used web servers in enterprise environments. De
 
 - Install Apache HTTP Server.
 - Verify the Apache service status.
-- Confirm web server accessibility.
-- Validate network connectivity.
-- Verify HTTP service availability.
+- Confirm automatic service startup.
+- Validate HTTP service availability.
+- Verify local and remote web access.
 - Practice Linux service administration.
 
 ---
@@ -35,17 +37,19 @@ Apache is one of the most widely used web servers in enterprise environments. De
 |----------|---------|
 | Operating System | Ubuntu Server 26.04 LTS |
 | Web Server | Apache HTTP Server |
-| Client Device | Kali Linux / Windows Host |
+| Package Manager | APT |
+| Service Manager | systemd |
+| Client Devices | Kali Linux / Windows Host |
 | Service Port | TCP 80 |
 | Network Mode | Bridged Adapter |
 
 ---
 
-## Implementation
+# Deployment Procedure
 
-### Install Apache HTTP Server
+## Install Apache HTTP Server
 
-Apache HTTP Server was installed using Ubuntu's APT package manager.
+Apache HTTP Server was installed using Ubuntu's Advanced Package Tool (APT). The package manager automatically downloaded and installed Apache along with its required dependencies.
 
 ### Command
 
@@ -56,13 +60,13 @@ sudo apt install apache2
 
 > **Screenshot**
 >
-> *(Insert installation screenshot)*
+> <img width="785" height="398" alt="image" src="https://github.com/user-attachments/assets/5b9eb0e6-a1e3-422d-a9a2-070bd52caf4b" />
 
 ---
 
-### Verify Apache Service
+## Verify Apache Service
 
-The Apache service was verified to ensure it was installed successfully and running.
+After installation, the Apache service was verified to ensure that it started successfully and was operating normally.
 
 ### Command
 
@@ -72,13 +76,13 @@ sudo systemctl status apache2
 
 > **Screenshot**
 >
-> *(Insert screenshot)*
+> <img width="982" height="301" alt="image" src="https://github.com/user-attachments/assets/63b615af-5952-4753-aa5f-1e0afe206de6" />
 
 ---
 
-### Verify Automatic Startup
+## Verify Automatic Startup
 
-The Apache service was verified to ensure it was enabled during system startup.
+The Apache service was verified to ensure that it would automatically start during system boot.
 
 ### Command
 
@@ -88,13 +92,13 @@ sudo systemctl is-enabled apache2
 
 > **Screenshot**
 >
-> *(Insert screenshot)*
+> <img width="406" height="32" alt="image" src="https://github.com/user-attachments/assets/cbe12f13-73d6-4800-ab1f-2e97beb0ac4a" />
 
 ---
 
-### Verify Listening Port
+## Verify Listening Port
 
-The server was checked to confirm that Apache was listening on TCP port 80.
+After confirming that the service was running, the server was checked to verify that Apache was actively listening for incoming HTTP connections on TCP port 80.
 
 ### Command
 
@@ -108,9 +112,9 @@ sudo ss -tln | grep :80
 
 ---
 
-### Verify Local Web Service
+## Verify Local Web Service
 
-The web server was accessed locally from the Ubuntu Server to verify successful deployment.
+The default Apache web page was retrieved locally to verify that the web server was functioning correctly before testing remote client access.
 
 ### Command
 
@@ -126,13 +130,13 @@ wget -qO- http://localhost
 
 > **Screenshot**
 >
-> *(Insert screenshot)*
+> <img width="1452" height="528" alt="image" src="https://github.com/user-attachments/assets/01add14a-9505-40d0-8617-409598fc92a5" />
 
 ---
 
-### Verify Network Connectivity
+## Verify Remote Access
 
-The server's IP address was identified before testing remote access.
+The server's IP address was identified and used to access the Apache default page from another device on the local network.
 
 ### Command
 
@@ -142,47 +146,53 @@ hostname -I
 
 > **Screenshot**
 >
-> *(Insert screenshot)*
+> <img width="293" height="31" alt="image" src="https://github.com/user-attachments/assets/b6831e2a-a9eb-4ba5-a1a0-ae045dfe4810" />
 
-The web server was then accessed from another device on the same network using a web browser.
+The web server was then accessed remotely using a web browser.
 
 Example:
 
 ```text
-http://192.168.100.105
+http://192.168.100.108
 ```
 
 > **Screenshot**
 >
-> *(Insert browser screenshot showing the Apache default page)*
+> <img width="1918" height="1021" alt="image" src="https://github.com/user-attachments/assets/9590f1f3-5034-43ae-9093-749f50501672" />
+
+Successful access confirmed that:
+
+- Apache was operational.
+- TCP port 80 was reachable.
+- The web service was accessible from another device on the network.
 
 ---
 
-## Service Management
+# Service Management
 
-Apache service management was verified using systemd.
+Apache is managed using **systemd**, allowing administrators to control the service during routine maintenance and troubleshooting.
 
-### Commands
+The following commands are commonly used during daily Linux administration.
 
-Start service
+### Start Service
 
 ```bash
 sudo systemctl start apache2
 ```
 
-Stop service
+### Stop Service
 
 ```bash
 sudo systemctl stop apache2
 ```
 
-Restart service
+### Restart Service
 
 ```bash
 sudo systemctl restart apache2
 ```
 
-Reload configuration
+### Reload Configuration
 
 ```bash
 sudo systemctl reload apache2
@@ -190,92 +200,96 @@ sudo systemctl reload apache2
 
 ---
 
-## Troubleshooting
+# Troubleshooting
 
-### Unable to Access Apache Web Server
+## Apache Service Verification After Virtual Machine Recovery
 
-#### Symptoms
+### Scenario
 
-- Browser could not access the web server.
-- HTTP requests timed out.
+Following the recovery of the Ubuntu Server virtual machine from a VirtualBox snapshot failure, Apache functionality was verified to ensure that the service remained operational.
 
-#### Root Cause
+### Validation Steps
 
-The Apache service was not running or the server's network connectivity had not yet been verified.
+The following checks were performed:
 
-#### Resolution
+- Verify the Apache service status.
+- Confirm that TCP port 80 was listening.
+- Retrieve the default web page locally.
+- Access the web server remotely from another device.
 
-The Apache service status was verified using `systemctl`, and network connectivity was confirmed before accessing the web server.
+### Result
 
-#### Verification
-
-The Apache default page was successfully accessed from another device on the local network.
+Apache resumed normal operation without requiring reinstallation or additional configuration, confirming that the service configuration remained intact after infrastructure recovery.
 
 ---
 
-## Security Considerations
+# Security Considerations
 
 Basic security practices for Apache include:
 
-- Keep Apache updated.
-- Disable unused modules.
-- Restrict unnecessary network exposure.
-- Monitor web server logs.
-- Apply operating system security updates regularly.
+- Keep Apache updated with the latest security patches.
+- Disable unnecessary Apache modules.
+- Restrict network exposure where appropriate.
+- Review Apache access and error logs regularly.
+- Apply operating system security updates.
 
 ---
 
-## Verification
+# Operational Validation
 
-| Task | Status |
-|------|--------|
-| Apache Installed | ✅ |
+The Apache deployment was considered successful after verifying the following:
+
+| Validation | Status |
+|------------|--------|
+| Apache Package Installed | ✅ |
 | Apache Service Running | ✅ |
 | Service Enabled at Boot | ✅ |
 | TCP Port 80 Listening | ✅ |
-| Local Access Verified | ✅ |
-| Remote Access Verified | ✅ |
+| Local HTTP Requests Successful | ✅ |
+| Remote HTTP Requests Successful | ✅ |
 
 ---
 
-## Observations
+# Observations
 
 The Apache HTTP Server was deployed successfully and provided web services across the local network.
 
 Key observations include:
 
 - Apache listens on TCP port 80 by default.
-- Linux services are managed using systemd.
-- Network connectivity must be verified before testing web access.
-- Successful service deployment requires both a running service and proper network configuration.
-- The default Apache page confirms a successful installation.
+- Linux services are managed using **systemd**.
+- Service validation should always follow software installation.
+- Network connectivity should be verified before troubleshooting application-layer services.
+- The default Apache web page confirms a successful deployment.
+- Service validation following infrastructure recovery helps ensure application availability after system incidents.
 
 ---
 
-## Technical Competencies Demonstrated
+# Technical Competencies Demonstrated
 
 - Linux System Administration
-- Apache HTTP Server Administration
 - Linux Service Management
-- Network Verification
+- Apache HTTP Server Administration
 - TCP/IP Networking
+- Network Verification
 - Package Management
 - Service Validation
 - Technical Documentation
 
 ---
 
-## Lessons Learned
+# Lessons Learned
 
-This project reinforced the importance of validating Linux services after deployment.
+This project reinforced the importance of validating Linux services after deployment and following infrastructure changes.
 
 Key takeaways include:
 
 - Services should always be verified after installation.
-- Network connectivity should be confirmed before troubleshooting applications.
-- Understanding listening ports simplifies service verification.
-- Service management using systemd is a fundamental Linux administration skill.
-- Documentation improves repeatability and troubleshooting efficiency.
+- Automatic service startup should be confirmed to improve operational reliability.
+- Understanding listening ports simplifies service verification and troubleshooting.
+- Network connectivity should be validated before investigating application-layer issues.
+- Service functionality should be revalidated after infrastructure recovery to ensure operational continuity.
+- Structured documentation improves repeatability, troubleshooting, and long-term maintenance.
 
 ---
 
