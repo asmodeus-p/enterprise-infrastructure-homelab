@@ -342,7 +342,7 @@ Key takeaways include:
 
 ## Related Documentation
 
-Several issues were encountered during the deployment process. These incidents have been documented separately as troubleshooting reports.
+Several issues were encountered during the deployment process. Troubleshooting write-ups for each are coming soon.
 
 - Zabbix Web Frontend Not Accessible
 - Zabbix Server Failed to Start
@@ -362,4 +362,4 @@ Several issues were encountered during the deployment process. These incidents h
 
 | ⬅ Previous | 🏠 Section Home | Next ➡ |
 |------------|----------------|---------|
-| [Apache HTTP Server](../01-linux-server-deployment/05-apache-web-server.md) | [Infrastructure Monitoring](README.md) | [Initial Zabbix Configuration](02-zabbix-initial-configuration.md) |
+| [Apache HTTP Server](../01-linux-server-deployment/05-apache-web-server.md) | [Infrastructure Monitoring](README.md) | [SNMPv3 Configuration for Raspberry Pi](02-snmp-configuration.md) |

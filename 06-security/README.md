@@ -6,7 +6,7 @@ Hardening the lab's servers and services. Documentation for this section is in p
 
 ## Planned Topics
 
-- UFW firewall configuration
+- UFW firewall configuration (configured; write-up in progress)
 - SSH hardening (key-based authentication, disabling root login)
 - Fail2ban for brute-force protection
 - Security update practices

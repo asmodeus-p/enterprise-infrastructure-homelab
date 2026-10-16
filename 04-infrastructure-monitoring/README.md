@@ -23,11 +23,11 @@ The primary monitoring platform is Zabbix, which is used to monitor Linux hosts,
 
 ## Troubleshooting
 
-Several installation and configuration issues were encountered during deployment and have been documented separately.
+Issues encountered during deployment (write-ups coming soon):
 
-See:
+- Zabbix web frontend not accessible
+- Zabbix server failed to start
+- MySQL authentication error
+- Zabbix web interface login failure
 
-- troubleshooting/01-zabbix-web-frontend-not-accessible.md
-- troubleshooting/02-zabbix-server-failed-to-start.md
-- troubleshooting/03-mysql-authentication-error.md
-- troubleshooting/04-zabbix-login-failure.md
+SNMPv3 issues and their fixes are documented in the [SNMPv3 Configuration](02-snmp-configuration.md#troubleshooting-notes) guide.

@@ -78,7 +78,7 @@ Zabbix on the Ubuntu Server monitors its own host and polls the Raspberry Pi ove
 | Troubleshooting and Incident Response | Ongoing (VM recovery documented) |
 | Linux Administration | In Progress |
 | Network Administration | In Progress |
-| Security | Planned |
+| Security | In Progress (UFW firewall configured) |
 
 ---
 
@@ -152,7 +152,8 @@ Real issues hit while building the lab, each with its cause and fix documented:
 
 **Next**
 - [ ] Network administration documentation
-- [ ] UFW firewall and server hardening
+- [ ] UFW firewall documentation
+- [ ] Server hardening (SSH keys, Fail2ban)
 - [ ] DNS and DHCP services
 - [ ] Bash automation (backups, maintenance)
 - [ ] Docker and Nginx reverse proxy
