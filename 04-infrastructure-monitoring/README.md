@@ -19,7 +19,7 @@ The primary monitoring platform is Zabbix, which is used to monitor Linux hosts,
 | Zabbix Server Installation | ✅ |
 | Initial Configuration | ✅ |
 | Monitor Ubuntu Server | ✅ |
-| Monitor Raspberry Pi via SNMP | Planned |
+| Monitor Raspberry Pi via SNMPv3 | ✅ |
 
 ## Troubleshooting
 

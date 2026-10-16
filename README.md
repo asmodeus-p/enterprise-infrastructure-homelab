@@ -2,294 +2,168 @@
 
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Platform](https://img.shields.io/badge/Platform-Ubuntu%20Server-orange)
+![Monitoring](https://img.shields.io/badge/Monitoring-Zabbix%20%2B%20SNMPv3-red)
 ![Virtualization](https://img.shields.io/badge/VirtualBox-7.2.2-blue)
-![Documentation](https://img.shields.io/badge/Documentation-Professional-blueviolet)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-> **Last Updated:** July 2026
+> **Last Updated:** October 2026
 
-> An enterprise-inspired homelab built to develop practical, hands-on skills in Linux System Administration, Networking, Infrastructure Monitoring, and IT Operations.
-
----
-
-# Overview
-
-This repository documents my hands-on journey of building and maintaining a Linux-based enterprise homelab. The objective is to simulate enterprise IT environments and gain practical experience beyond classroom learning.
-
-Instead of simply installing software, every service is deployed, configured, tested, documented, and maintained as if it were part of a production environment.
-
-This project serves as both a technical portfolio and a learning journal while preparing for roles such as:
-
-- Junior Systems Administrator
-- Junior NOC Engineer
-- IT Infrastructure Engineer
-- Technical Support Engineer
+An enterprise-inspired homelab for hands-on practice in Linux system administration, networking, infrastructure monitoring, and IT operations. Every service is deployed, validated, troubleshot, and documented as if it were running in production.
 
 ---
 
-# Key Highlights
+## At a Glance
 
-- Enterprise-inspired Linux infrastructure
-- Production-style technical documentation
-- Linux systems administration
-- Infrastructure monitoring
-- Troubleshooting and incident response
-- Continuous project expansion
+| | |
+|---|---|
+| **Nodes** | Windows 11 host, Ubuntu Server VM, Kali Linux VM, Raspberry Pi |
+| **Core services** | OpenSSH, Apache HTTP Server, Zabbix Server (MySQL backend) |
+| **Monitoring** | Zabbix monitoring the Ubuntu Server (agent) and the Raspberry Pi (SNMPv3) |
+| **Documentation** | Step-by-step guides with validation, troubleshooting, and lessons learned |
 
 ---
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Key Highlights](#key-highlights)
-- [Objectives](#objectives)
-- [Current Progress](#current-progress)
 - [Lab Environment](#lab-environment)
 - [Architecture](#architecture)
-- [Repository Structure](#repository-structure)
+- [Current Progress](#current-progress)
+- [Documentation](#documentation)
+- [Troubleshooting Highlights](#troubleshooting-highlights)
 - [Technologies](#technologies)
 - [Skills Demonstrated](#skills-demonstrated)
-- [Documentation](#documentation)
 - [Roadmap](#roadmap)
 - [Why This Project?](#why-this-project)
-- [Disclaimer](#disclaimer)
 
 ---
 
-# Objectives
+## Lab Environment
 
-- Build a production-like Linux environment
-- Strengthen Linux administration skills
-- Practice networking concepts and server deployment
-- Learn infrastructure monitoring and incident response
-- Develop structured troubleshooting methodology
-- Produce professional technical documentation
-- Continuously expand the environment with enterprise technologies
-
----
-
-# Repository Goals
-
-This repository is maintained as a long-term learning project. New technologies, services, troubleshooting scenarios, and documentation will continue to be added as practical experience grows.
-
----
-
-## Current Progress
-
-| Section | Status |
-|---------|--------|
-| Linux Server Deployment | **Completed** |
-| Linux Administration | In Progress |
-| Network Administration | In Progress |
-| Infrastructure Monitoring | In Progress |
-| Security | Planned |
-| Incident Response | **Completed** |
-
----
-
-# Lab Environment
-
-## Host Machine
-
-- Windows 11
-
-## Virtualization Platform
-
-- Oracle VirtualBox
-
-## Virtual Machines
-
-| Machine | Operating System | Purpose |
-|---------|------------------|---------|
-| Ubuntu Server | Ubuntu Server LTS | Primary Linux Server |
-| Kali Linux | Kali Linux | Administration Workstation / Testing Client |
+| Node | Type | Operating System | Role |
+|------|------|------------------|------|
+| Host | Physical laptop | Windows 11 | Runs Oracle VirtualBox |
+| Ubuntu Server | Virtual machine | Ubuntu Server LTS | Primary server: SSH, Apache, Zabbix Server |
+| Kali Linux | Virtual machine | Kali Linux | Administration workstation and test client |
+| Raspberry Pi | Physical device | Raspberry Pi OS | Monitored device via SNMPv3 |
 
 ---
 
 ## Architecture
 
 ```text
-                    Windows 11 Host
-                           │
-                           ▼
-                  Oracle VirtualBox
-                    ┌────────┴────────┐
-                    │                 │
-                    ▼                 ▼
-            Ubuntu Server        Kali Linux
-            (Primary Server)     (Client/Test Workstation)
-                    │
-        ┌───────────┼────────────┐
-        │           │            │
-        ▼           ▼            ▼
-     OpenSSH     Apache        Zabbix
-     Server    HTTP Server    Monitoring
+                       Windows 11 Host
+                              │
+                       Oracle VirtualBox
+                  ┌───────────┴───────────┐
+                  │                       │
+            Ubuntu Server             Kali Linux
+          (Primary Server)        (Admin / Test Client)
+                  │                       │
+      ┌───────────┼───────────┐           └── SSH ──► Ubuntu Server
+      │           │           │
+   OpenSSH     Apache      Zabbix Server ◄──── SNMPv3 (UDP 161) ──── Raspberry Pi
+                           + MySQL                                (Raspberry Pi OS)
 ```
 
----
-
-# Repository Structure
-
-```text
-.
-├── 01-linux-server-deployment/
-├── 02-linux-administration/
-├── 03-network-administration/
-├── 04-infrastructure-monitoring/
-├── 05-troubleshooting-and-incident-response/
-├── 06-security/
-├── 07-learning/
-└── assets/
-```
-
-Each directory focuses on a specific area of system administration and contains detailed documentation, screenshots, configuration steps, troubleshooting notes, and lessons learned.
-Documentation is organized by technical domain rather than chronology to mirror the structure of an enterprise knowledge base.
+Zabbix on the Ubuntu Server monitors its own host and polls the Raspberry Pi over SNMPv3 with authentication and encryption.
 
 ---
 
-# Technologies
+## Current Progress
 
-## Technologies Used
-
-### Operating Systems
-- Ubuntu Server LTS
-- Kali Linux
-
-### Infrastructure
-- Oracle VirtualBox
-
-### Administration
-- Bash Shell
-- GNU/Linux Command Line
-
-### Services
-- OpenSSH
-- Apache HTTP Server
-
-### Monitoring
-- Zabbix (In Progress)
-
-### Version Control
-- Git
-- GitHub
+| Area | Status |
+|------|--------|
+| Linux Server Deployment | Completed |
+| Infrastructure Monitoring (Zabbix + SNMPv3) | Completed |
+| Troubleshooting and Incident Response | Ongoing (VM recovery documented) |
+| Linux Administration | In Progress |
+| Network Administration | In Progress |
+| Security | Planned |
 
 ---
 
-# Skills Demonstrated
+## Documentation
 
-## Linux Administration
+### 01 · Linux Server Deployment
+- [Ubuntu Server Installation](01-linux-server-deployment/01-ubuntu-server-installation.md)
+- [Server Information](01-linux-server-deployment/02-server-information.md)
+- [User and Group Management](01-linux-server-deployment/03-user-group-management.md)
+- [SSH Remote Administration](01-linux-server-deployment/04-ssh-remote-administration.md)
+- [Apache Web Server](01-linux-server-deployment/05-apache-web-server.md)
 
-- Server installation
-- User and group management
-- File permissions
-- SSH administration
-- Package management
-- Service management
+### 04 · Infrastructure Monitoring
+- [Zabbix Server Installation](04-infrastructure-monitoring/01-zabbix-server-installation.md)
+- [SNMPv3 Configuration for Raspberry Pi](04-infrastructure-monitoring/02-snmp-configuration.md)
 
-## Infrastructure
+### 05 · Troubleshooting and Incident Response
+- [Incident: VirtualBox Snapshot Recovery](05-troubleshooting-and-incident-response/01-virtualbox-vm-recovery.md)
 
-- Server deployment
-- Service configuration
-- Documentation
-- Configuration management
-- System maintenance
-- Service validation
-
-## Networking
-
-- IP addressing
-- Virtual networking
-- SSH connectivity
-- Client-server communication
-- Network troubleshooting
-
-## Infrastructure Monitoring
-
-- Zabbix deployment
-- Service monitoring
-- Host monitoring
-- Dashboard configuration
-
-## Troubleshooting and Incident Response
-
-- Root cause analysis
-- Network diagnostics
-- Virtual machine recovery
-- Service troubleshooting
-- Incident documentation
-
-## Technical Documentation
-
-Each project within this repository follows a consistent documentation format to improve readability, reproducibility, and troubleshooting.
-
-Documentation typically includes:
-
-- Project overview
-- Objectives
-- Environment
-- Implementation steps
-- Configuration commands
-- Validation procedures
-- Troubleshooting
-- Lessons learned
-- Repository navigation
+Each guide follows the same format: objectives, environment, implementation steps, commands, validation, troubleshooting, and lessons learned. Documentation is organized by technical area to mirror an enterprise knowledge base.
 
 ---
 
-# Documentation Standards
+## Troubleshooting Highlights
 
-Every project follows a standardized documentation format that includes:
+Real issues hit while building the lab, each with its cause and fix documented:
 
-- Objectives
-- Prerequisites
-- Step-by-step procedures
-- Configuration commands
-- Validation steps
-- Screenshots
-- Troubleshooting notes
-- Lessons learned
+| Issue | Root Cause | Resolution |
+|-------|-----------|------------|
+| Zabbix SNMP items stayed unsupported even though `snmpwalk` worked | SNMPv3 username was entered as the Context Name | Left Context Name blank; set the user as Security Name |
+| `cannot resolve address [[zabbix.pi]:161]` | Zabbix tried to resolve a hostname | Pointed the SNMP interface at the Pi's static IP |
+| New SNMPv3 user not recognized | `snmpd` not restarted after the change | `sudo systemctl restart snmpd` |
+| Ubuntu Server VM showed as `<inaccessible>` and would not start | Host shut down mid snapshot/save-state, leaving a broken differencing disk | Recovered the server from the existing base virtual disk ([write-up](05-troubleshooting-and-incident-response/01-virtualbox-vm-recovery.md)) |
 
-This approach mirrors the documentation standards commonly used in enterprise IT environments.
+---
 
-# Roadmap
+## Technologies
 
-## Completed
+| Category | Tools |
+|----------|-------|
+| Operating systems | Ubuntu Server LTS, Kali Linux, Raspberry Pi OS, Windows 11 |
+| Virtualization | Oracle VirtualBox |
+| Services | OpenSSH, Apache HTTP Server, MySQL |
+| Monitoring | Zabbix Server, Zabbix Agent, SNMPv3 (net-snmp) |
+| Administration | Bash, GNU/Linux CLI, systemd |
+| Version control | Git, GitHub |
 
-- [x] Ubuntu Server Deployment
-- [x] User & Group Management
-- [x] SSH Remote Administration
+---
+
+## Skills Demonstrated
+
+- **Linux administration:** server installation, users and groups, file permissions, package and service management with systemd
+- **Remote administration:** SSH setup and access from a separate client workstation
+- **Infrastructure monitoring:** Zabbix deployment, host monitoring, SNMPv3 device monitoring, dashboards
+- **Networking:** IP addressing, static IPs, virtual networking, client-server connectivity, network troubleshooting
+- **Incident response:** root cause analysis, VM recovery, incident documentation
+- **Technical documentation:** reproducible, validated guides written as a knowledge base
+
+---
+
+## Roadmap
+
+**Completed**
+- [x] Ubuntu Server deployment
+- [x] User and group management
+- [x] SSH remote administration
 - [x] Apache HTTP Server
-- [x] VirtualBox VM Recovery Documentation
+- [x] Zabbix Server installation and host monitoring
+- [x] Raspberry Pi monitoring via SNMPv3
+- [x] VirtualBox VM recovery write-up
 
-## In Progress
-
-- [ ] Network Administration
-- [ ] Zabbix Monitoring
-
-## Planned
-
-- [ ] Docker
-- [ ] Samba
-- [ ] DNS
-- [ ] DHCP
-- [ ] Bash Automation
-- [ ] Nginx Reverse Proxy
-- [ ] UFW Firewall
-- [ ] Infrastructure Hardening
-- [ ] Ansible
+**Next**
+- [ ] Network administration documentation
+- [ ] UFW firewall and server hardening
+- [ ] DNS and DHCP services
+- [ ] Bash automation (backups, maintenance)
+- [ ] Docker and Nginx reverse proxy
+- [ ] Ansible configuration management
 
 ---
 
-# Why This Project?
+## Why This Project?
 
-Many entry-level Systems Administrator and Network Operations Center (NOC) roles require practical experience with Linux administration, networking, monitoring, troubleshooting, and technical documentation.
-
-This homelab was built to bridge the gap between academic knowledge and real-world IT operations by providing hands-on experience with infrastructure deployment, service management, incident response, and operational documentation.
-
-Rather than focusing solely on software installation, each project emphasizes deployment validation, troubleshooting, operational readiness, and structured documentation to simulate professional IT environments.
+Entry-level IT operations, NOC, and infrastructure roles expect hands-on experience with Linux, networking, monitoring, and troubleshooting. This lab bridges the gap between academic knowledge and real operations work, with an emphasis on validation, root cause analysis, and clear documentation rather than just installing software.
 
 ---
 
-# Disclaimer
-
-This project is intended for educational purposes and personal skill development. The environment is continuously updated as new technologies are learned and implemented.
+*Built and maintained by [Marc Danielle Ipapo](https://linkedin.com/in/marc-danielle-ipapo) · BS Computer Engineering, Bulacan State University. For educational and personal skill development.*
