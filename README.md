@@ -18,6 +18,7 @@ An enterprise-inspired homelab for hands-on practice in Linux system administrat
 |---|---|
 | **Nodes** | Windows 11 host, Ubuntu Server VM, Kali Linux VM, Raspberry Pi |
 | **Core services** | OpenSSH, Apache HTTP Server, Zabbix Server (MySQL backend) |
+| **Security** | UFW host firewall on the Raspberry Pi (default deny, SSH on a non-default port) |
 | **Monitoring** | Zabbix monitoring the Ubuntu Server (agent) and the Raspberry Pi (SNMPv3) |
 | **Documentation** | Step-by-step guides with validation, troubleshooting, and lessons learned |
 
@@ -44,7 +45,7 @@ An enterprise-inspired homelab for hands-on practice in Linux system administrat
 | Host | Physical laptop | Windows 11 | Runs Oracle VirtualBox |
 | Ubuntu Server | Virtual machine | Ubuntu Server LTS | Primary server: SSH, Apache, Zabbix Server |
 | Kali Linux | Virtual machine | Kali Linux | Administration workstation and test client |
-| Raspberry Pi | Physical device | Raspberry Pi OS | Monitored device via SNMPv3 |
+| Raspberry Pi | Physical device | Raspberry Pi OS | Monitored via SNMPv3; hosts an Apache SNMP dashboard; protected by UFW |
 
 ---
 
@@ -78,7 +79,7 @@ Zabbix on the Ubuntu Server monitors its own host and polls the Raspberry Pi ove
 | Troubleshooting and Incident Response | Ongoing (VM recovery documented) |
 | Linux Administration | In Progress |
 | Network Administration | In Progress |
-| Security | In Progress (UFW firewall configured) |
+| Security | In Progress (UFW firewall completed) |
 
 ---
 
@@ -97,6 +98,9 @@ Zabbix on the Ubuntu Server monitors its own host and polls the Raspberry Pi ove
 
 ### 05 · Troubleshooting and Incident Response
 - [Incident: VirtualBox Snapshot Recovery](05-troubleshooting-and-incident-response/01-virtualbox-vm-recovery.md)
+
+### 06 · Security
+- [UFW Firewall Configuration](06-security/01-ufw-firewall-configuration.md)
 
 Each guide follows the same format: objectives, environment, implementation steps, commands, validation, troubleshooting, and lessons learned. Documentation is organized by technical area to mirror an enterprise knowledge base.
 
@@ -122,6 +126,7 @@ Real issues hit while building the lab, each with its cause and fix documented:
 | Operating systems | Ubuntu Server LTS, Kali Linux, Raspberry Pi OS, Windows 11 |
 | Virtualization | Oracle VirtualBox |
 | Services | OpenSSH, Apache HTTP Server, MySQL |
+| Security | UFW |
 | Monitoring | Zabbix Server, Zabbix Agent, SNMPv3 (net-snmp) |
 | Administration | Bash, GNU/Linux CLI, systemd |
 | Version control | Git, GitHub |
@@ -134,6 +139,7 @@ Real issues hit while building the lab, each with its cause and fix documented:
 - **Remote administration:** SSH setup and access from a separate client workstation
 - **Infrastructure monitoring:** Zabbix deployment, host monitoring, SNMPv3 device monitoring, dashboards
 - **Networking:** IP addressing, static IPs, virtual networking, client-server connectivity, network troubleshooting
+- **Security:** host-based firewall with a default-deny policy (UFW), non-default SSH port, firewall rules for monitoring traffic
 - **Incident response:** root cause analysis, VM recovery, incident documentation
 - **Technical documentation:** reproducible, validated guides written as a knowledge base
 
@@ -149,10 +155,11 @@ Real issues hit while building the lab, each with its cause and fix documented:
 - [x] Zabbix Server installation and host monitoring
 - [x] Raspberry Pi monitoring via SNMPv3
 - [x] VirtualBox VM recovery write-up
+- [x] UFW firewall on the Raspberry Pi
 
 **Next**
 - [ ] Network administration documentation
-- [ ] UFW firewall documentation
+- [ ] UFW firewall on the Ubuntu Server
 - [ ] Server hardening (SSH keys, Fail2ban)
 - [ ] DNS and DHCP services
 - [ ] Bash automation (backups, maintenance)

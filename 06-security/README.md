@@ -1,15 +1,15 @@
 # Security
 
-> **Status:** Coming soon
+Hardening the lab's servers and services.
 
-Hardening the lab's servers and services. Documentation for this section is in progress.
+## Projects
 
-## Planned Topics
-
-- UFW firewall configuration (configured; write-up in progress)
-- SSH hardening (key-based authentication, disabling root login)
-- Fail2ban for brute-force protection
-- Security update practices
+| Project | Status |
+|---------|--------|
+| [UFW Firewall Configuration](01-ufw-firewall-configuration.md) | ✅ |
+| SSH Hardening (key-based authentication, disabling root login) | Planned |
+| Fail2ban for Brute-Force Protection | Planned |
+| Security Update Practices | Planned |
 
 ---
 
